@@ -4,39 +4,17 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { 
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
-  AreaChart, Area 
-} from 'recharts'
-import { 
-  Gamepad2, Users, TrendingUp, Building2, Zap, Shield, BarChart3, 
-  Star, ArrowRight, CheckCircle, Menu, X, Phone, Mail, MapPin, 
-  Instagram, Facebook, Twitter, Linkedin, ArrowUp, 
-  ChevronRight, PlayCircle, ShieldCheck, HeadphonesIcon, 
-  Layers, FileText, Handshake, GraduationCap, LogIn
+  Gamepad2, Users, Building2, Zap, BarChart3, 
+  Star, ArrowRight, Menu, X, Phone, Mail, MapPin, 
+  Instagram, Facebook, Twitter, Linkedin, 
+  PlayCircle, HeadphonesIcon, 
+  Layers, FileText, Handshake, GraduationCap
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
 import { useApp } from '@/contexts/AppContext'
-
-// Mock Data
-const revenueData = [
-  { month: 'Jan', revenue: 4000, profit: 2400 },
-  { month: 'Feb', revenue: 3000, profit: 1398 },
-  { month: 'Mar', revenue: 2000, profit: 9800 },
-  { month: 'Apr', revenue: 2780, profit: 3908 },
-  { month: 'Mei', revenue: 1890, profit: 4800 },
-  { month: 'Jun', revenue: 2390, profit: 3800 },
-]
-
-const portfolioItems = [
-  { id: 1, name: 'BoxPlay Padang', desc: 'Outlet pertama di Padang', status: 'Active', image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=300&fit=crop' },
-  { id: 2, name: 'BoxPlay Bukittinggi', desc: 'Outlet di Bukittinggi', status: 'Active', image: 'https://images.unsplash.com/photo-1493711662062-fa541f7601d5?w=400&h=300&fit=crop' },
-  { id: 3, name: 'BoxPlay Pekanbaru', desc: 'Outlet di Pekanbaru', status: 'Coming Soon', image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=300&fit=crop' },
-  { id: 4, name: 'Turnamen Nasional', desc: 'Event gaming besar', status: 'Completed', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop' },
-  { id: 5, name: 'Instalasi Mitra Baru', desc: 'Setup outlet baru', status: 'Active', image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&h=300&fit=crop' },
-]
 
 const timelineData = [
   { year: '2024', title: 'Ide BoxPlay.id', desc: 'Konsep awal platform gaming modern Indonesia' },
@@ -218,7 +196,7 @@ const Header = () => {
 
 const Hero = () => {
   const router = useRouter()
-  const { homepage, dashboardStats } = useApp()
+  const { homepage } = useApp()
 
   const handleMasukDashboard = () => {
     router.push('/login')
