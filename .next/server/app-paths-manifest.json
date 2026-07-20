@@ -1,4 +1,7 @@
 {
-  "/owner/edit-homepage/page": "app/owner/edit-homepage/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/owner/page": "app/owner/page.js",
+  "/login/page": "app/login/page.js",
+  "/owner/portfolio/page": "app/owner/portfolio/page.js",
+  "/owner/edit-homepage/page": "app/owner/edit-homepage/page.js"
 }
