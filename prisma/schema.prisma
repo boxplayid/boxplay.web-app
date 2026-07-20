@@ -1,0 +1,159 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum UserRole {
+  OWNER
+  ADMIN
+  MITRA
+  INVESTOR
+  OPERATOR
+  MEMBER
+}
+
+enum MemberLevel {
+  GOLD
+  PLATINUM
+}
+
+enum UnitStatus {
+  AVAILABLE
+  OCCUPIED
+  MAINTENANCE
+  RESERVED
+}
+
+// Tabel User (semua akun aplikasi)
+model User {
+  id                String           @id @default(cuid())
+  name              String
+  email             String           @unique
+  password          String           // password hashed (gunakan bcrypt nanti)
+  role              UserRole         @default(MEMBER)
+  branchId          String?
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  // Relasi
+  branch            Branch?          @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  memberProfile     MemberProfile?
+  transactions      Transaction[]
+  createdMembers    MemberProfile[]  @relation("CreatedByOperator")
+  processedDeposits MemberDeposit[]  @relation("ProcessedByOperator")
+}
+
+// Tabel Cabang/Branch
+model Branch {
+  id               String          @id @default(cuid())
+  name             String
+  address          String?
+  phone            String?
+  qrisUrl          String?
+  googleMapsUrl    String?
+  unitCode         String          @unique
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  // Relasi
+  users            User[]
+  units            Unit[]
+  memberProfiles   MemberProfile[]
+  transactions     Transaction[]
+}
+
+// Tabel Unit/Paket
+model Unit {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  price       Int        // harga per jam
+  status      UnitStatus @default(AVAILABLE)
+  branchId    String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relasi
+  branch       Branch       @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+}
+
+// Tabel Profil Member
+model MemberProfile {
+  id                String           @id @default(cuid())
+  userId            String           @unique
+  memberId          String           @unique // Nomor member/NIK sistem
+  level             MemberLevel      @default(GOLD)
+  mainTimeBalance   Int              @default(0) // saldo waktu utama (jam)
+  bonusTimeBalance  Int              @default(0) // saldo bonus (jam)
+  totalDeposit      Int              @default(0) // total deposit (rupiah)
+  branchId          String
+  registeredBy      String           // id operator yang mendaftarkan
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  // Relasi
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  branch          Branch            @relation(fields: [branchId], references: [id], onDelete: Cascade)
+  createdBy       User              @relation("CreatedByOperator", fields: [registeredBy], references: [id], onDelete: Cascade)
+  deposits        MemberDeposit[]
+  transactions    Transaction[]
+}
+
+// Tabel Riwayat Deposit Member
+model MemberDeposit {
+  id             String           @id @default(cuid())
+  memberId       String
+  amount         Int              // nominal deposit (rupiah)
+  level          MemberLevel
+  mainTimeAdded  Int              // waktu utama ditambahkan (jam)
+  bonusTimeAdded Int              // waktu bonus ditambahkan (jam)
+  processedBy    String           // id operator yang memproses
+  processedAt    DateTime         @default(now())
+  createdAt      DateTime         @default(now())
+
+  // Relasi
+  memberProfile  MemberProfile    @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  processedByUser User             @relation("ProcessedByOperator", fields: [processedBy], references: [id], onDelete: Cascade)
+}
+
+// Tabel Transaksi (billing, dll)
+model Transaction {
+  id          String   @id @default(cuid())
+  type        String   // "BILLING", "FNB", "MEMBERSHIP"
+  amount      Int
+  unitId      String?
+  memberId    String?
+  userId      String?
+  branchId    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relasi
+  unit     Unit?          @relation(fields: [unitId], references: [id])
+  member   MemberProfile? @relation(fields: [memberId], references: [id])
+  user     User?          @relation(fields: [userId], references: [id])
+  branch   Branch?        @relation(fields: [branchId], references: [id])
+}
+
+// Tabel Homepage Content (untuk edit halaman utama)
+model HomepageContent {
+  id          String   @id @default(cuid())
+  heroTitle   String   @default("Selamat Datang di BoxPlay.id")
+  heroSubtitle String?  @default("Tempat bermain yang nyaman dan modern")
+  aboutTitle  String   @default("Tentang Kami")
+  aboutText   String?
+  galleryTitle String  @default("Galeri BoxPlay")
+  galleryImages String[] // array base64 atau URL gambar
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

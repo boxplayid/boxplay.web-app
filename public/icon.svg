@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="BoxPlay icon">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2196F3" />
+      <stop offset="100%" stop-color="#9C27B0" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="#0B1020"/>
+  <rect x="34" y="34" width="188" height="188" rx="42" fill="url(#g)"/>
+  <path d="M84 86h88v24H84zM84 120h54v24H84zM84 154h88v24H84z" fill="#fff" opacity="0.95"/>
+  <circle cx="180" cy="132" r="20" fill="#fff" opacity="0.9"/>
+</svg>
