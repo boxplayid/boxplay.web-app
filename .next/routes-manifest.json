@@ -1,0 +1,191 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/admin",
+      "regex": "^/admin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/gabung-mitra",
+      "regex": "^/gabung\\-mitra(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/gabung\\-mitra(?:/)?$"
+    },
+    {
+      "page": "/investor",
+      "regex": "^/investor(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/investor(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/member",
+      "regex": "^/member(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/member(?:/)?$"
+    },
+    {
+      "page": "/mitra",
+      "regex": "^/mitra(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/mitra(?:/)?$"
+    },
+    {
+      "page": "/operator",
+      "regex": "^/operator(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/operator(?:/)?$"
+    },
+    {
+      "page": "/operator/billing",
+      "regex": "^/operator/billing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/operator/billing(?:/)?$"
+    },
+    {
+      "page": "/operator/customers",
+      "regex": "^/operator/customers(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/operator/customers(?:/)?$"
+    },
+    {
+      "page": "/operator/fnb",
+      "regex": "^/operator/fnb(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/operator/fnb(?:/)?$"
+    },
+    {
+      "page": "/operator/membership",
+      "regex": "^/operator/membership(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/operator/membership(?:/)?$"
+    },
+    {
+      "page": "/owner",
+      "regex": "^/owner(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner(?:/)?$"
+    },
+    {
+      "page": "/owner/add-account",
+      "regex": "^/owner/add\\-account(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/add\\-account(?:/)?$"
+    },
+    {
+      "page": "/owner/attendance-report",
+      "regex": "^/owner/attendance\\-report(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/attendance\\-report(?:/)?$"
+    },
+    {
+      "page": "/owner/branches",
+      "regex": "^/owner/branches(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/branches(?:/)?$"
+    },
+    {
+      "page": "/owner/edit-homepage",
+      "regex": "^/owner/edit\\-homepage(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/edit\\-homepage(?:/)?$"
+    },
+    {
+      "page": "/owner/paket",
+      "regex": "^/owner/paket(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/paket(?:/)?$"
+    },
+    {
+      "page": "/owner/portfolio",
+      "regex": "^/owner/portfolio(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/portfolio(?:/)?$"
+    },
+    {
+      "page": "/owner/print",
+      "regex": "^/owner/print(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/print(?:/)?$"
+    },
+    {
+      "page": "/owner/revenue-report",
+      "regex": "^/owner/revenue\\-report(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/revenue\\-report(?:/)?$"
+    },
+    {
+      "page": "/owner/settings",
+      "regex": "^/owner/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/settings(?:/)?$"
+    },
+    {
+      "page": "/owner/transaction-history",
+      "regex": "^/owner/transaction\\-history(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/transaction\\-history(?:/)?$"
+    },
+    {
+      "page": "/owner/units",
+      "regex": "^/owner/units(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/owner/units(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}
